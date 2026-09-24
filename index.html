@@ -3,202 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio de Rayan Zizoua, élève en première CIEL et passionné par l'informatique.">
+  <meta name="description" content="Portfolio de Rayan Zizoua, élève en première CIEL.">
   <title>Rayan Zizoua — Portfolio</title>
   <style>
-    :root {
-      --bg: #08111f;
-      --bg-soft: #0d1b2f;
-      --surface: rgba(18, 34, 56, .78);
-      --surface-light: #142844;
-      --text: #f5f7fb;
-      --muted: #a7b6cb;
-      --primary: #67e8f9;
-      --secondary: #a78bfa;
-      --line: rgba(167, 182, 203, .18);
-      --shadow: 0 24px 70px rgba(0, 0, 0, .28);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 85% 5%, rgba(103, 232, 249, .14), transparent 30rem),
-        radial-gradient(circle at 10% 30%, rgba(167, 139, 250, .12), transparent 26rem),
-        var(--bg);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      border-bottom: 1px solid var(--line);
-      background: rgba(8, 17, 31, .78);
-      backdrop-filter: blur(18px);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 72px; }
-    .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.03em; }
-    .logo-mark {
-      display: grid; width: 38px; height: 38px; place-items: center; border-radius: 12px;
-      color: var(--bg); background: linear-gradient(135deg, var(--primary), var(--secondary));
-    }
-    .nav-links { display: flex; gap: 28px; color: var(--muted); font-size: .95rem; }
-    .nav-links a:hover { color: var(--primary); }
-
-    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: center; min-height: 680px; padding: 100px 0 120px; }
-    .eyebrow { margin: 0 0 18px; color: var(--primary); font-size: .85rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
-    h1, h2, h3 { line-height: 1.15; letter-spacing: -.04em; }
-    h1 { max-width: 700px; margin: 0; font-size: clamp(3rem, 7vw, 6rem); }
-    .gradient-text { color: var(--primary); background: linear-gradient(100deg, var(--primary), var(--secondary)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-copy { max-width: 620px; margin: 26px 0 32px; color: var(--muted); font-size: 1.15rem; }
-    .buttons { display: flex; flex-wrap: wrap; gap: 14px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; padding: 13px 20px; border: 1px solid var(--line); border-radius: 12px; font-weight: 750; transition: transform .2s, border-color .2s, background .2s; }
-    .button:hover { transform: translateY(-3px); border-color: var(--primary); }
-    .button.primary { color: var(--bg); border-color: transparent; background: linear-gradient(100deg, var(--primary), #bae6fd); }
-
-    .hero-card { position: relative; padding: 28px; border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(145deg, rgba(20, 40, 68, .9), rgba(12, 25, 44, .72)); box-shadow: var(--shadow); }
-    .hero-card::before { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: var(--secondary); opacity: .18; content: ""; filter: blur(35px); right: -24px; top: -24px; }
-    .avatar { display: grid; width: 110px; height: 110px; place-items: center; margin-bottom: 28px; border: 1px solid rgba(255,255,255,.25); border-radius: 30px; color: var(--bg); background: linear-gradient(135deg, var(--primary), var(--secondary)); font-size: 2rem; font-weight: 900; }
-    .hero-card h2 { margin: 0 0 8px; font-size: 1.65rem; }
-    .hero-card p { margin: 0; color: var(--muted); }
-    .status { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; color: #bbf7d0; font-size: .9rem; }
-    .status::before { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; content: ""; }
-
-    section { padding: 95px 0; }
-    .section-heading { max-width: 650px; margin-bottom: 38px; }
-    .section-heading h2 { margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3rem); }
-    .section-heading p { margin: 0; color: var(--muted); }
-    .about-grid, .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .panel { padding: 30px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); }
-    .panel h3 { margin: 0 0 14px; font-size: 1.35rem; }
-    .panel p { margin: 0; color: var(--muted); }
-
-    .skills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-    .skill { padding: 9px 13px; border: 1px solid rgba(103,232,249,.25); border-radius: 999px; color: #cffafe; background: rgba(103,232,249,.08); font-size: .92rem; }
-    .timeline { display: grid; gap: 18px; }
-    .timeline-item { display: flex; gap: 16px; align-items: flex-start; }
-    .timeline-dot { flex: 0 0 auto; width: 12px; height: 12px; margin-top: 8px; border: 3px solid var(--primary); border-radius: 50%; }
-    .timeline-item strong { display: block; }
-    .timeline-item span { color: var(--muted); font-size: .95rem; }
-
-    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .project { min-height: 220px; padding: 26px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(155deg, var(--surface-light), var(--surface)); transition: transform .2s, border-color .2s; }
-    .project:hover { transform: translateY(-6px); border-color: rgba(103,232,249,.55); }
-    .project-number { color: var(--primary); font-weight: 800; }
-    .project h3 { margin: 22px 0 10px; font-size: 1.25rem; }
-    .project p { margin: 0; color: var(--muted); font-size: .95rem; }
-    .project small { display: inline-block; margin-top: 20px; color: var(--secondary); }
-
-    .contact-card { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 38px; border: 1px solid rgba(103,232,249,.28); border-radius: 24px; background: linear-gradient(110deg, rgba(103,232,249,.1), rgba(167,139,250,.1)); }
-    .contact-card h2 { margin: 0 0 10px; }
-    .contact-card p { margin: 0; color: var(--muted); }
-    footer { padding: 35px 0; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: .9rem; }
-
-    @media (max-width: 800px) {
-      .hero { grid-template-columns: 1fr; gap: 35px; min-height: auto; padding: 75px 0 80px; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .project-grid { grid-template-columns: 1fr; }
-      .contact-card { align-items: flex-start; flex-direction: column; }
-    }
-    @media (max-width: 560px) {
-      .container { width: min(100% - 28px, 1120px); }
-      .nav-links { gap: 12px; font-size: .82rem; }
-      .logo-mark { width: 34px; height: 34px; }
-      .logo span:last-child { display: none; }
-      section { padding: 70px 0; }
-    }
+    :root{--bg:#08111f;--surface:#122238;--text:#f5f7fb;--muted:#a7b6cb;--primary:#67e8f9;--secondary:#a78bfa;--line:#30445d;--danger:#fb7185}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(circle at 85% 5%,#67e8f924,transparent 30rem),radial-gradient(circle at 10% 30%,#a78bfa1f,transparent 26rem),var(--bg);font-family:Inter,system-ui,sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}.container{width:min(1120px,calc(100% - 40px));margin:auto}
+    .site-header{position:sticky;top:0;z-index:2;border-bottom:1px solid #ffffff1f;background:#08111fc7;backdrop-filter:blur(18px)}.nav{display:flex;align-items:center;justify-content:space-between;min-height:72px}.logo{display:flex;align-items:center;gap:10px;font-weight:800}.logo-mark{display:grid;width:38px;height:38px;place-items:center;border-radius:12px;color:var(--bg);background:linear-gradient(135deg,var(--primary),var(--secondary))}.nav-links{display:flex;gap:28px;color:var(--muted)}.nav-links a:hover{color:var(--primary)}
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center;min-height:680px;padding:100px 0 120px}.eyebrow{margin:0 0 18px;color:var(--primary);font-size:.85rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}h1,h2,h3{line-height:1.15;letter-spacing:-.04em}h1{margin:0;font-size:clamp(3rem,7vw,6rem)}.gradient-text{background:linear-gradient(100deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.hero-copy{max-width:620px;margin:26px 0 32px;color:var(--muted);font-size:1.15rem}.buttons{display:flex;flex-wrap:wrap;gap:14px}.button{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border:1px solid var(--line);border-radius:12px;font-weight:750;transition:.2s}.button:hover{transform:translateY(-3px);border-color:var(--primary)}.button.primary{color:var(--bg);border:0;background:linear-gradient(100deg,var(--primary),#bae6fd)}
+    .hero-card,.panel,.project{border:1px solid var(--line);background:#122238c7;box-shadow:0 24px 70px #00000047}.hero-card{padding:28px;border-radius:28px}.avatar{display:grid;width:110px;height:110px;place-items:center;margin-bottom:28px;border-radius:30px;color:var(--bg);background:linear-gradient(135deg,var(--primary),var(--secondary));font-size:2rem;font-weight:900}.hero-card h2{margin:0 0 8px}.hero-card p,.panel p,.project p{color:var(--muted)}.status{display:inline-flex;gap:8px;margin-top:28px;color:#bbf7d0;font-size:.9rem}.status:before{width:8px;height:8px;margin-top:8px;border-radius:50%;background:#4ade80;content:""}
+    section{padding:95px 0}.section-heading{max-width:650px;margin-bottom:38px}.section-heading h2{margin:0 0 12px;font-size:clamp(2rem,4vw,3rem)}.section-heading p{margin:0;color:var(--muted)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.panel{padding:30px;border-radius:22px}.panel h3{margin:0 0 14px}.skills{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.skill{padding:9px 13px;border:1px solid #67e8f940;border-radius:999px;color:#cffafe;background:#67e8f914;font-size:.92rem}.timeline{display:grid;gap:18px}.timeline-item{display:flex;gap:16px}.timeline-dot{width:12px;height:12px;margin-top:8px;border:3px solid var(--primary);border-radius:50%;flex:none}.timeline-item strong{display:block}.timeline-item span{color:var(--muted);font-size:.95rem}.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.project{min-height:220px;padding:26px;border-radius:20px;transition:.2s}.project:hover{transform:translateY(-6px);border-color:#67e8f98c}.project-number{color:var(--primary);font-weight:800}.project h3{margin:22px 0 10px}.project small{display:inline-block;margin-top:20px;color:var(--secondary)}.contact-card{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:38px;border:1px solid #67e8f947;border-radius:24px;background:#67e8f91a}.contact-card h2{margin:0 0 10px}.contact-card p{margin:0;color:var(--muted)}footer{padding:35px 0;border-top:1px solid #ffffff1f;color:var(--muted);text-align:center;font-size:.9rem}
+    #lock-screen{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:#08111ff5;backdrop-filter:blur(14px)}.lock-box{width:min(420px,100%);padding:34px;border:1px solid #67e8f95c;border-radius:24px;background:linear-gradient(145deg,#142844,#0c192c);box-shadow:0 25px 80px #0009;text-align:center}.lock-icon{font-size:2.5rem}.lock-box h1{margin:12px 0 8px;font-size:2rem}.lock-box p{margin:0 0 22px;color:var(--muted)}#access-code{width:100%;padding:14px;border:1px solid var(--line);border-radius:10px;outline:0;color:var(--text);background:#08111f;text-align:center;font:inherit;font-size:1.3rem;letter-spacing:.45em}#access-code:focus{border-color:var(--primary);box-shadow:0 0 0 3px #67e8f925}.unlock-button{width:100%;margin-top:14px;padding:13px;border:0;border-radius:10px;color:var(--bg);background:linear-gradient(100deg,var(--primary),#bae6fd);cursor:pointer;font:inherit;font-weight:800}.error{min-height:24px;margin:12px 0 0!important;color:var(--danger)!important;font-size:.9rem}.hidden{display:none!important}
+    @media(max-width:800px){.hero{grid-template-columns:1fr;gap:35px;min-height:auto;padding:75px 0 80px}.about-grid,.project-grid{grid-template-columns:1fr}.contact-card{align-items:flex-start;flex-direction:column}}@media(max-width:560px){.container{width:calc(100% - 28px)}.nav-links{gap:12px;font-size:.82rem}.logo span:last-child{display:none}section{padding:70px 0}}
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav container" aria-label="Navigation principale">
-      <a class="logo" href="#accueil"><span class="logo-mark">RZ</span><span>Rayan Zizoua</span></a>
-      <div class="nav-links">
-        <a href="#apropos">À propos</a>
-        <a href="#projets">Projets</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
+  <div id="lock-screen" role="dialog" aria-modal="true" aria-labelledby="lock-title">
+    <div class="lock-box">
+      <div class="lock-icon" aria-hidden="true">🔒</div>
+      <h1 id="lock-title">Portfolio protégé</h1>
+      <p>Entrez le code à 6 chiffres pour accéder au portfolio de Rayan Zizoua.</p>
+      <form id="unlock-form">
+        <label class="hidden" for="access-code">Code d'accès</label>
+        <input id="access-code" type="password" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off" placeholder="••••••" required>
+        <button class="unlock-button" type="submit">Accéder au site</button>
+        <p id="error-message" class="error" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
 
-  <main>
-    <section class="hero container" id="accueil">
-      <div>
-        <p class="eyebrow">Bienvenue sur mon portfolio</p>
-        <h1>Je suis <span class="gradient-text">Rayan Zizoua.</span></h1>
-        <p class="hero-copy">J'ai 16 ans et je suis élève en première CIEL. Curieux et motivé, je découvre les technologies numériques, les réseaux et la création de projets informatiques.</p>
-        <div class="buttons">
-          <a class="button primary" href="#projets">Découvrir mes projets ↓</a>
-          <a class="button" href="#contact">Me contacter</a>
-        </div>
-      </div>
-      <aside class="hero-card" aria-label="Présentation rapide">
-        <div class="avatar" aria-hidden="true">RZ</div>
-        <h2>Élève en première CIEL</h2>
-        <p>Cybersécurité, Informatique, Électronique et Réseaux.</p>
-        <div class="status">Toujours en train d'apprendre</div>
-      </aside>
-    </section>
+  <div id="site-content" class="hidden">
+    <header class="site-header"><nav class="nav container" aria-label="Navigation principale"><a class="logo" href="#accueil"><span class="logo-mark">RZ</span><span>Rayan Zizoua</span></a><div class="nav-links"><a href="#apropos">À propos</a><a href="#projets">Projets</a><a href="#contact">Contact</a></div></nav></header>
+    <main>
+      <section class="hero container" id="accueil"><div><p class="eyebrow">Bienvenue sur mon portfolio</p><h1>Je suis <span class="gradient-text">Rayan Zizoua.</span></h1><p class="hero-copy">J'ai 16 ans et je suis élève en première CIEL. Curieux et motivé, je découvre les technologies numériques, les réseaux et la création de projets informatiques.</p><div class="buttons"><a class="button primary" href="#projets">Découvrir mes projets ↓</a><a class="button" href="#contact">Me contacter</a></div></div><aside class="hero-card"><div class="avatar" aria-hidden="true">RZ</div><h2>Élève en première CIEL</h2><p>Cybersécurité, Informatique, Électronique et Réseaux.</p><div class="status">Toujours en train d'apprendre</div></aside></section>
+      <section id="apropos"><div class="container"><div class="section-heading"><p class="eyebrow">Qui suis-je ?</p><h2>Un profil curieux et créatif.</h2><p>Ce portfolio présente mon parcours, mes centres d'intérêt et les projets que je construis au fil de ma formation.</p></div><div class="about-grid"><article class="panel"><h3>Mon parcours</h3><p>Je suis actuellement en première CIEL. Cette formation me permet de développer mes connaissances dans les systèmes numériques, les réseaux, l'électronique et la cybersécurité.</p><div class="skills"><span class="skill">Réseaux</span><span class="skill">Cybersécurité</span><span class="skill">HTML / CSS</span><span class="skill">Informatique</span><span class="skill">Électronique</span></div></article><article class="panel"><h3>Ce que je recherche</h3><div class="timeline"><div class="timeline-item"><span class="timeline-dot"></span><div><strong>Apprendre</strong><span>Approfondir mes compétences techniques et découvrir de nouveaux outils.</span></div></div><div class="timeline-item"><span class="timeline-dot"></span><div><strong>Créer</strong><span>Transformer mes idées en projets concrets, utiles et bien présentés.</span></div></div><div class="timeline-item"><span class="timeline-dot"></span><div><strong>Progresser</strong><span>Gagner de l'expérience grâce à la pratique et aux projets personnels.</span></div></div></div></article></div></div></section>
+      <section id="projets"><div class="container"><div class="section-heading"><p class="eyebrow">Mon travail</p><h2>Des idées en construction.</h2><p>Voici les domaines dans lesquels je souhaite réaliser et présenter mes prochains projets.</p></div><div class="project-grid"><article class="project"><span class="project-number">01 / WEB</span><h3>Sites web</h3><p>Créer des interfaces modernes, accessibles et responsives avec HTML, CSS et JavaScript.</p><small>À venir</small></article><article class="project"><span class="project-number">02 / RÉSEAU</span><h3>Réseaux & systèmes</h3><p>Comprendre le fonctionnement des réseaux et mettre en place des environnements de test.</p><small>En apprentissage</small></article><article class="project"><span class="project-number">03 / SÉCURITÉ</span><h3>Cybersécurité</h3><p>Découvrir les bonnes pratiques de protection des données et de sécurisation des systèmes.</p><small>Objectif personnel</small></article></div></div></section>
+      <section id="contact"><div class="container"><div class="contact-card"><div><p class="eyebrow">Une question ?</p><h2>Parlons de mes projets.</h2><p>Vous pouvez me contacter pour échanger sur mon parcours ou mes réalisations.</p></div><a class="button primary" href="mailto:rayan.zizoua@example.com">Envoyer un e-mail →</a></div></div></section>
+    </main>
+    <footer>© 2026 Rayan Zizoua — Portfolio personnel</footer>
+  </div>
+  <script>
+    const CODE = '153690';
+    const lockScreen = document.getElementById('lock-screen');
+    const siteContent = document.getElementById('site-content');
+    const form = document.getElementById('unlock-form');
+    const input = document.getElementById('access-code');
+    const error = document.getElementById('error-message');
 
-    <section id="apropos">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Qui suis-je ?</p>
-          <h2>Un profil curieux et créatif.</h2>
-          <p>Ce portfolio présente mon parcours, mes centres d'intérêt et les projets que je construis au fil de ma formation.</p>
-        </div>
-        <div class="about-grid">
-          <article class="panel">
-            <h3>Mon parcours</h3>
-            <p>Je suis actuellement en première CIEL. Cette formation me permet de développer mes connaissances dans les systèmes numériques, les réseaux, l'électronique et la cybersécurité.</p>
-            <div class="skills" aria-label="Mes domaines d'intérêt">
-              <span class="skill">Réseaux</span><span class="skill">Cybersécurité</span><span class="skill">HTML / CSS</span><span class="skill">Informatique</span><span class="skill">Électronique</span>
-            </div>
-          </article>
-          <article class="panel">
-            <h3>Ce que je recherche</h3>
-            <div class="timeline">
-              <div class="timeline-item"><span class="timeline-dot"></span><div><strong>Apprendre</strong><span>Approfondir mes compétences techniques et découvrir de nouveaux outils.</span></div></div>
-              <div class="timeline-item"><span class="timeline-dot"></span><div><strong>Créer</strong><span>Transformer mes idées en projets concrets, utiles et bien présentés.</span></div></div>
-              <div class="timeline-item"><span class="timeline-dot"></span><div><strong>Progresser</strong><span>Gagner de l'expérience grâce à la pratique et aux projets personnels.</span></div></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+    function unlock() {
+      lockScreen.classList.add('hidden');
+      siteContent.classList.remove('hidden');
+      sessionStorage.setItem('portfolioUnlocked', 'true');
+    }
 
-    <section id="projets">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Mon travail</p>
-          <h2>Des idées en construction.</h2>
-          <p>Voici les domaines dans lesquels je souhaite réaliser et présenter mes prochains projets.</p>
-        </div>
-        <div class="project-grid">
-          <article class="project"><span class="project-number">01 / WEB</span><h3>Sites web</h3><p>Créer des interfaces modernes, accessibles et responsives avec HTML, CSS et JavaScript.</p><small>À venir</small></article>
-          <article class="project"><span class="project-number">02 / RÉSEAU</span><h3>Réseaux & systèmes</h3><p>Comprendre le fonctionnement des réseaux et mettre en place des environnements de test.</p><small>En apprentissage</small></article>
-          <article class="project"><span class="project-number">03 / SÉCURITÉ</span><h3>Cybersécurité</h3><p>Découvrir les bonnes pratiques de protection des données et de sécurisation des systèmes.</p><small>Objectif personnel</small></article>
-        </div>
-      </div>
-    </section>
+    if (sessionStorage.getItem('portfolioUnlocked') === 'true') unlock();
+    else input.focus();
 
-    <section id="contact">
-      <div class="container">
-        <div class="contact-card">
-          <div><p class="eyebrow">Une question ?</p><h2>Parlons de mes projets.</h2><p>Vous pouvez me contacter pour échanger sur mon parcours ou mes réalisations.</p></div>
-          <a class="button primary" href="mailto:rayan.zizoua@example.com">Envoyer un e-mail →</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>© 2026 Rayan Zizoua — Portfolio personnel</footer>
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (input.value === CODE) {
+        unlock();
+      } else {
+        error.textContent = 'Code incorrect. Veuillez réessayer.';
+        input.value = '';
+        input.focus();
+      }
+    });
+  </script>
 </body>
 </html>
