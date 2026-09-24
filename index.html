@@ -1,60 +1,244 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-</head><link rel="stylesheet" type="text/css" href="rayan.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulaire de demande de dépannage informatique">
+  <title>Support IT | Demande de dépannage</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --background: #f1f5f9;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #64748b;
+      --border: #dbe3ef;
+      --danger: #dc2626;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background: linear-gradient(135deg, #eff6ff, var(--background));
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    .page-header {
+      padding: 28px 20px 72px;
+      color: #fff;
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    }
+
+    .header-content,
+    main {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .brand-icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .18);
+      font-size: 1.35rem;
+    }
+
+    .intro { max-width: 620px; margin-top: 42px; }
+    .intro h1 { margin: 0 0 12px; font-size: clamp(2rem, 5vw, 3.2rem); }
+    .intro p { margin: 0; color: #dbeafe; font-size: 1.05rem; line-height: 1.7; }
+
+    main { margin-top: -42px; padding-bottom: 40px; }
+
+    .card {
+      padding: clamp(22px, 5vw, 44px);
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 20px;
+      background: var(--surface);
+      box-shadow: 0 18px 45px rgba(30, 58, 138, .14);
+    }
+
+    .section-title { margin: 0 0 6px; font-size: 1.35rem; }
+    .section-help { margin: 0 0 28px; color: var(--muted); }
+
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    label, legend { font-weight: 700; }
+    .required { color: var(--danger); }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      background: #fbfdff;
+      font: inherit;
+      transition: .2s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: 3px solid rgba(37, 99, 235, .15);
+      border-color: var(--primary);
+      background: #fff;
+    }
+
+    textarea { min-height: 140px; resize: vertical; }
+    fieldset { margin: 0; padding: 0; border: 0; }
+    legend { margin-bottom: 12px; }
+
+    .options { display: flex; flex-wrap: wrap; gap: 10px; }
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 13px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 500;
+      background: #fbfdff;
+    }
+    .option:hover { border-color: var(--primary); background: #eff6ff; }
+    .option input { width: auto; accent-color: var(--primary); }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    button {
+      padding: 13px 22px;
+      border: 0;
+      border-radius: 10px;
+      color: #fff;
+      background: var(--primary);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+    }
+    button:hover { background: var(--primary-dark); }
+    button[type="reset"] { color: var(--text); background: #e2e8f0; }
+    button[type="reset"]:hover { background: #cbd5e1; }
+
+    .notice { margin-top: 22px; color: var(--muted); font-size: .9rem; }
+    footer { padding: 0 20px 30px; color: var(--muted); text-align: center; font-size: .9rem; }
+
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .page-header { padding-bottom: 64px; }
+    }
+  </style>
+</head>
 <body>
-<form>
-	 
-	 <fieldset>
-	 	<legend>Demande de dépannage</legend>
+  <header class="page-header">
+    <div class="header-content">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">🛠️</span> Support IT</div>
+      <div class="intro">
+        <h1>Besoin d'aide ?</h1>
+        <p>Décrivez votre problème informatique et notre équipe vous répondra dans les meilleurs délais.</p>
+      </div>
+    </div>
+  </header>
 
-	 	Nom :              <input type="text" name="name">
-        <br>
-        <br>
-	 	Prénom :           <input type="text" name="prénom">
-	 	<br>
-	 	<br>
-	    Adresse e-mail :   <input type="email" name="email">
-	    <br>
-	    <br>
-	    Numéro du poste :  <input type="text" name="email"> Salle : <input type="text" name="salle">
-        <br>
-        <br>
-	    Type de problème : <input type="radio" name="profil">Réseau
-	             <input type="radio" name="profil">Matériel
-	             <input type="radio" name="profil">Logiciel
-	             <input type="radio" name="profil">Compte utilisateur 
+  <main>
+    <section class="card" aria-labelledby="form-title">
+      <h2 class="section-title" id="form-title">Nouvelle demande de dépannage</h2>
+      <p class="section-help">Les champs marqués d'un <span class="required">*</span> sont obligatoires.</p>
 
-	    <br>
-	    <br>
-	    
-	    Equipement concerné : <input type="checkbox" name="check">Ordniateur
-	              <input type="checkbox" name="box">Ecran
-	              <input type="checkbox" name="check">Clavier
-	              <input type="checkbox" name="check">Souris
-	    <br>
-	    <br>
-	    Type de problème : <input type="radio" name="profil">Faible
-	             <input type="radio" name="profil">Normal
-	             <input type="radio" name="profil">Urgent
-	     <br>
-	    <br>  
-	    Description :
-	     <textarea rows="5" cols="45"></textarea>
-	    <br>
-	    <br>
+      <form action="#" method="post">
+        <div class="grid">
+          <div class="field">
+            <label for="last-name">Nom <span class="required">*</span></label>
+            <input id="last-name" name="nom" type="text" autocomplete="family-name" required>
+          </div>
 
-	    <input type="submit" value="Envoyer le signalement">
-	    <input type="reset" value="Effacer">
-	 </fieldset>
-</form>
+          <div class="field">
+            <label for="first-name">Prénom <span class="required">*</span></label>
+            <input id="first-name" name="prenom" type="text" autocomplete="given-name" required>
+          </div>
 
+          <div class="field">
+            <label for="email">Adresse e-mail <span class="required">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
 
-<p align="center">
-<i><b>Aperçu du résultat attendu dans le navigateur</b></i>
-</p>
+          <div class="field">
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="telephone" type="tel" autocomplete="tel">
+          </div>
+
+          <div class="field">
+            <label for="workstation">Numéro du poste</label>
+            <input id="workstation" name="poste" type="text">
+          </div>
+
+          <div class="field">
+            <label for="room">Salle / emplacement</label>
+            <input id="room" name="salle" type="text">
+          </div>
+
+          <div class="field full">
+            <fieldset>
+              <legend>Type de problème <span class="required">*</span></legend>
+              <div class="options">
+                <label class="option"><input type="radio" name="type_probleme" value="reseau" required> Réseau</label>
+                <label class="option"><input type="radio" name="type_probleme" value="materiel"> Matériel</label>
+                <label class="option"><input type="radio" name="type_probleme" value="logiciel"> Logiciel</label>
+                <label class="option"><input type="radio" name="type_probleme" value="compte"> Compte utilisateur</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field full">
+            <fieldset>
+              <legend>Équipement concerné</legend>
+              <div class="options">
+                <label class="option"><input type="checkbox" name="equipement" value="ordinateur"> Ordinateur</label>
+                <label class="option"><input type="checkbox" name="equipement" value="ecran"> Écran</label>
+                <label class="option"><input type="checkbox" name="equipement" value="clavier"> Clavier</label>
+                <label class="option"><input type="checkbox" name="equipement" value="souris"> Souris</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field full">
+            <fieldset>
+              <legend>Priorité <span class="required">*</span></legend>
+              <div class="options">
+                <label class="option"><input type="radio" name="priorite" value="faible" required> Faible</label>
+                <label class="option"><input type="radio" name="priorite" value="normale"> Normale</label>
+                <label class="option"><input type="radio" name="priorite" value="urgente"> Urgente</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field full">
+            <label for="description">Description du problème <span class="required">*</span></label>
+            <textarea id="description" name="description" placeholder="Expliquez ce qui se passe et indiquez le message d'erreur éventuel..." required></textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Envoyer la demande</button>
+          <button type="reset">Effacer le formulaire</button>
+        </div>
+        <p class="notice">Vos informations sont utilisées uniquement pour traiter votre demande de support.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer>© 2026 Support IT — Page créée par Rayan Zizoua</footer>
 </body>
 </html>
