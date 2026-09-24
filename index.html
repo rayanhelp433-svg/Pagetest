@@ -3,242 +3,202 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Formulaire de demande de dépannage informatique">
-  <title>Support IT | Demande de dépannage</title>
+  <meta name="description" content="Portfolio de Rayan Zizoua, élève en première CIEL et passionné par l'informatique.">
+  <title>Rayan Zizoua — Portfolio</title>
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --background: #f1f5f9;
-      --surface: #ffffff;
-      --text: #172033;
-      --muted: #64748b;
-      --border: #dbe3ef;
-      --danger: #dc2626;
+      --bg: #08111f;
+      --bg-soft: #0d1b2f;
+      --surface: rgba(18, 34, 56, .78);
+      --surface-light: #142844;
+      --text: #f5f7fb;
+      --muted: #a7b6cb;
+      --primary: #67e8f9;
+      --secondary: #a78bfa;
+      --line: rgba(167, 182, 203, .18);
+      --shadow: 0 24px 70px rgba(0, 0, 0, .28);
     }
 
     * { box-sizing: border-box; }
-
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      min-height: 100vh;
       color: var(--text);
-      background: linear-gradient(135deg, #eff6ff, var(--background));
-      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 85% 5%, rgba(103, 232, 249, .14), transparent 30rem),
+        radial-gradient(circle at 10% 30%, rgba(167, 139, 250, .12), transparent 26rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
     }
 
-    .page-header {
-      padding: 28px 20px 72px;
-      color: #fff;
-      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8, 17, 31, .78);
+      backdrop-filter: blur(18px);
     }
-
-    .header-content,
-    main {
-      width: min(960px, calc(100% - 32px));
-      margin: 0 auto;
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 72px; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.03em; }
+    .logo-mark {
+      display: grid; width: 38px; height: 38px; place-items: center; border-radius: 12px;
+      color: var(--bg); background: linear-gradient(135deg, var(--primary), var(--secondary));
     }
+    .nav-links { display: flex; gap: 28px; color: var(--muted); font-size: .95rem; }
+    .nav-links a:hover { color: var(--primary); }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.2rem;
-      font-weight: 800;
+    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: center; min-height: 680px; padding: 100px 0 120px; }
+    .eyebrow { margin: 0 0 18px; color: var(--primary); font-size: .85rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1, h2, h3 { line-height: 1.15; letter-spacing: -.04em; }
+    h1 { max-width: 700px; margin: 0; font-size: clamp(3rem, 7vw, 6rem); }
+    .gradient-text { color: var(--primary); background: linear-gradient(100deg, var(--primary), var(--secondary)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-copy { max-width: 620px; margin: 26px 0 32px; color: var(--muted); font-size: 1.15rem; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 14px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 13px 20px; border: 1px solid var(--line); border-radius: 12px; font-weight: 750; transition: transform .2s, border-color .2s, background .2s; }
+    .button:hover { transform: translateY(-3px); border-color: var(--primary); }
+    .button.primary { color: var(--bg); border-color: transparent; background: linear-gradient(100deg, var(--primary), #bae6fd); }
+
+    .hero-card { position: relative; padding: 28px; border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(145deg, rgba(20, 40, 68, .9), rgba(12, 25, 44, .72)); box-shadow: var(--shadow); }
+    .hero-card::before { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: var(--secondary); opacity: .18; content: ""; filter: blur(35px); right: -24px; top: -24px; }
+    .avatar { display: grid; width: 110px; height: 110px; place-items: center; margin-bottom: 28px; border: 1px solid rgba(255,255,255,.25); border-radius: 30px; color: var(--bg); background: linear-gradient(135deg, var(--primary), var(--secondary)); font-size: 2rem; font-weight: 900; }
+    .hero-card h2 { margin: 0 0 8px; font-size: 1.65rem; }
+    .hero-card p { margin: 0; color: var(--muted); }
+    .status { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; color: #bbf7d0; font-size: .9rem; }
+    .status::before { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; content: ""; }
+
+    section { padding: 95px 0; }
+    .section-heading { max-width: 650px; margin-bottom: 38px; }
+    .section-heading h2 { margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3rem); }
+    .section-heading p { margin: 0; color: var(--muted); }
+    .about-grid, .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .panel { padding: 30px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); }
+    .panel h3 { margin: 0 0 14px; font-size: 1.35rem; }
+    .panel p { margin: 0; color: var(--muted); }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .skill { padding: 9px 13px; border: 1px solid rgba(103,232,249,.25); border-radius: 999px; color: #cffafe; background: rgba(103,232,249,.08); font-size: .92rem; }
+    .timeline { display: grid; gap: 18px; }
+    .timeline-item { display: flex; gap: 16px; align-items: flex-start; }
+    .timeline-dot { flex: 0 0 auto; width: 12px; height: 12px; margin-top: 8px; border: 3px solid var(--primary); border-radius: 50%; }
+    .timeline-item strong { display: block; }
+    .timeline-item span { color: var(--muted); font-size: .95rem; }
+
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .project { min-height: 220px; padding: 26px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(155deg, var(--surface-light), var(--surface)); transition: transform .2s, border-color .2s; }
+    .project:hover { transform: translateY(-6px); border-color: rgba(103,232,249,.55); }
+    .project-number { color: var(--primary); font-weight: 800; }
+    .project h3 { margin: 22px 0 10px; font-size: 1.25rem; }
+    .project p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .project small { display: inline-block; margin-top: 20px; color: var(--secondary); }
+
+    .contact-card { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 38px; border: 1px solid rgba(103,232,249,.28); border-radius: 24px; background: linear-gradient(110deg, rgba(103,232,249,.1), rgba(167,139,250,.1)); }
+    .contact-card h2 { margin: 0 0 10px; }
+    .contact-card p { margin: 0; color: var(--muted); }
+    footer { padding: 35px 0; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: .9rem; }
+
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; gap: 35px; min-height: auto; padding: 75px 0 80px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .contact-card { align-items: flex-start; flex-direction: column; }
     }
-
-    .brand-icon {
-      display: grid;
-      width: 42px;
-      height: 42px;
-      place-items: center;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, .18);
-      font-size: 1.35rem;
-    }
-
-    .intro { max-width: 620px; margin-top: 42px; }
-    .intro h1 { margin: 0 0 12px; font-size: clamp(2rem, 5vw, 3.2rem); }
-    .intro p { margin: 0; color: #dbeafe; font-size: 1.05rem; line-height: 1.7; }
-
-    main { margin-top: -42px; padding-bottom: 40px; }
-
-    .card {
-      padding: clamp(22px, 5vw, 44px);
-      border: 1px solid rgba(255, 255, 255, .7);
-      border-radius: 20px;
-      background: var(--surface);
-      box-shadow: 0 18px 45px rgba(30, 58, 138, .14);
-    }
-
-    .section-title { margin: 0 0 6px; font-size: 1.35rem; }
-    .section-help { margin: 0 0 28px; color: var(--muted); }
-
-    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-    .field { display: flex; flex-direction: column; gap: 8px; }
-    .field.full { grid-column: 1 / -1; }
-    label, legend { font-weight: 700; }
-    .required { color: var(--danger); }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
-      background: #fbfdff;
-      font: inherit;
-      transition: .2s ease;
-    }
-
-    input:focus, textarea:focus, select:focus {
-      outline: 3px solid rgba(37, 99, 235, .15);
-      border-color: var(--primary);
-      background: #fff;
-    }
-
-    textarea { min-height: 140px; resize: vertical; }
-    fieldset { margin: 0; padding: 0; border: 0; }
-    legend { margin-bottom: 12px; }
-
-    .options { display: flex; flex-wrap: wrap; gap: 10px; }
-    .option {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 13px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 500;
-      background: #fbfdff;
-    }
-    .option:hover { border-color: var(--primary); background: #eff6ff; }
-    .option input { width: auto; accent-color: var(--primary); }
-
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    button {
-      padding: 13px 22px;
-      border: 0;
-      border-radius: 10px;
-      color: #fff;
-      background: var(--primary);
-      cursor: pointer;
-      font: inherit;
-      font-weight: 700;
-    }
-    button:hover { background: var(--primary-dark); }
-    button[type="reset"] { color: var(--text); background: #e2e8f0; }
-    button[type="reset"]:hover { background: #cbd5e1; }
-
-    .notice { margin-top: 22px; color: var(--muted); font-size: .9rem; }
-    footer { padding: 0 20px 30px; color: var(--muted); text-align: center; font-size: .9rem; }
-
-    @media (max-width: 640px) {
-      .grid { grid-template-columns: 1fr; }
-      .field.full { grid-column: auto; }
-      .page-header { padding-bottom: 64px; }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .nav-links { gap: 12px; font-size: .82rem; }
+      .logo-mark { width: 34px; height: 34px; }
+      .logo span:last-child { display: none; }
+      section { padding: 70px 0; }
     }
   </style>
 </head>
 <body>
-  <header class="page-header">
-    <div class="header-content">
-      <div class="brand"><span class="brand-icon" aria-hidden="true">🛠️</span> Support IT</div>
-      <div class="intro">
-        <h1>Besoin d'aide ?</h1>
-        <p>Décrivez votre problème informatique et notre équipe vous répondra dans les meilleurs délais.</p>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navigation principale">
+      <a class="logo" href="#accueil"><span class="logo-mark">RZ</span><span>Rayan Zizoua</span></a>
+      <div class="nav-links">
+        <a href="#apropos">À propos</a>
+        <a href="#projets">Projets</a>
+        <a href="#contact">Contact</a>
       </div>
-    </div>
+    </nav>
   </header>
 
   <main>
-    <section class="card" aria-labelledby="form-title">
-      <h2 class="section-title" id="form-title">Nouvelle demande de dépannage</h2>
-      <p class="section-help">Les champs marqués d'un <span class="required">*</span> sont obligatoires.</p>
-
-      <form action="#" method="post">
-        <div class="grid">
-          <div class="field">
-            <label for="last-name">Nom <span class="required">*</span></label>
-            <input id="last-name" name="nom" type="text" autocomplete="family-name" required>
-          </div>
-
-          <div class="field">
-            <label for="first-name">Prénom <span class="required">*</span></label>
-            <input id="first-name" name="prenom" type="text" autocomplete="given-name" required>
-          </div>
-
-          <div class="field">
-            <label for="email">Adresse e-mail <span class="required">*</span></label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
-          </div>
-
-          <div class="field">
-            <label for="phone">Téléphone</label>
-            <input id="phone" name="telephone" type="tel" autocomplete="tel">
-          </div>
-
-          <div class="field">
-            <label for="workstation">Numéro du poste</label>
-            <input id="workstation" name="poste" type="text">
-          </div>
-
-          <div class="field">
-            <label for="room">Salle / emplacement</label>
-            <input id="room" name="salle" type="text">
-          </div>
-
-          <div class="field full">
-            <fieldset>
-              <legend>Type de problème <span class="required">*</span></legend>
-              <div class="options">
-                <label class="option"><input type="radio" name="type_probleme" value="reseau" required> Réseau</label>
-                <label class="option"><input type="radio" name="type_probleme" value="materiel"> Matériel</label>
-                <label class="option"><input type="radio" name="type_probleme" value="logiciel"> Logiciel</label>
-                <label class="option"><input type="radio" name="type_probleme" value="compte"> Compte utilisateur</label>
-              </div>
-            </fieldset>
-          </div>
-
-          <div class="field full">
-            <fieldset>
-              <legend>Équipement concerné</legend>
-              <div class="options">
-                <label class="option"><input type="checkbox" name="equipement" value="ordinateur"> Ordinateur</label>
-                <label class="option"><input type="checkbox" name="equipement" value="ecran"> Écran</label>
-                <label class="option"><input type="checkbox" name="equipement" value="clavier"> Clavier</label>
-                <label class="option"><input type="checkbox" name="equipement" value="souris"> Souris</label>
-              </div>
-            </fieldset>
-          </div>
-
-          <div class="field full">
-            <fieldset>
-              <legend>Priorité <span class="required">*</span></legend>
-              <div class="options">
-                <label class="option"><input type="radio" name="priorite" value="faible" required> Faible</label>
-                <label class="option"><input type="radio" name="priorite" value="normale"> Normale</label>
-                <label class="option"><input type="radio" name="priorite" value="urgente"> Urgente</label>
-              </div>
-            </fieldset>
-          </div>
-
-          <div class="field full">
-            <label for="description">Description du problème <span class="required">*</span></label>
-            <textarea id="description" name="description" placeholder="Expliquez ce qui se passe et indiquez le message d'erreur éventuel..." required></textarea>
-          </div>
+    <section class="hero container" id="accueil">
+      <div>
+        <p class="eyebrow">Bienvenue sur mon portfolio</p>
+        <h1>Je suis <span class="gradient-text">Rayan Zizoua.</span></h1>
+        <p class="hero-copy">J'ai 16 ans et je suis élève en première CIEL. Curieux et motivé, je découvre les technologies numériques, les réseaux et la création de projets informatiques.</p>
+        <div class="buttons">
+          <a class="button primary" href="#projets">Découvrir mes projets ↓</a>
+          <a class="button" href="#contact">Me contacter</a>
         </div>
+      </div>
+      <aside class="hero-card" aria-label="Présentation rapide">
+        <div class="avatar" aria-hidden="true">RZ</div>
+        <h2>Élève en première CIEL</h2>
+        <p>Cybersécurité, Informatique, Électronique et Réseaux.</p>
+        <div class="status">Toujours en train d'apprendre</div>
+      </aside>
+    </section>
 
-        <div class="actions">
-          <button type="submit">Envoyer la demande</button>
-          <button type="reset">Effacer le formulaire</button>
+    <section id="apropos">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Qui suis-je ?</p>
+          <h2>Un profil curieux et créatif.</h2>
+          <p>Ce portfolio présente mon parcours, mes centres d'intérêt et les projets que je construis au fil de ma formation.</p>
         </div>
-        <p class="notice">Vos informations sont utilisées uniquement pour traiter votre demande de support.</p>
-      </form>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>Mon parcours</h3>
+            <p>Je suis actuellement en première CIEL. Cette formation me permet de développer mes connaissances dans les systèmes numériques, les réseaux, l'électronique et la cybersécurité.</p>
+            <div class="skills" aria-label="Mes domaines d'intérêt">
+              <span class="skill">Réseaux</span><span class="skill">Cybersécurité</span><span class="skill">HTML / CSS</span><span class="skill">Informatique</span><span class="skill">Électronique</span>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>Ce que je recherche</h3>
+            <div class="timeline">
+              <div class="timeline-item"><span class="timeline-dot"></span><div><strong>Apprendre</strong><span>Approfondir mes compétences techniques et découvrir de nouveaux outils.</span></div></div>
+              <div class="timeline-item"><span class="timeline-dot"></span><div><strong>Créer</strong><span>Transformer mes idées en projets concrets, utiles et bien présentés.</span></div></div>
+              <div class="timeline-item"><span class="timeline-dot"></span><div><strong>Progresser</strong><span>Gagner de l'expérience grâce à la pratique et aux projets personnels.</span></div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projets">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Mon travail</p>
+          <h2>Des idées en construction.</h2>
+          <p>Voici les domaines dans lesquels je souhaite réaliser et présenter mes prochains projets.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project"><span class="project-number">01 / WEB</span><h3>Sites web</h3><p>Créer des interfaces modernes, accessibles et responsives avec HTML, CSS et JavaScript.</p><small>À venir</small></article>
+          <article class="project"><span class="project-number">02 / RÉSEAU</span><h3>Réseaux & systèmes</h3><p>Comprendre le fonctionnement des réseaux et mettre en place des environnements de test.</p><small>En apprentissage</small></article>
+          <article class="project"><span class="project-number">03 / SÉCURITÉ</span><h3>Cybersécurité</h3><p>Découvrir les bonnes pratiques de protection des données et de sécurisation des systèmes.</p><small>Objectif personnel</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div><p class="eyebrow">Une question ?</p><h2>Parlons de mes projets.</h2><p>Vous pouvez me contacter pour échanger sur mon parcours ou mes réalisations.</p></div>
+          <a class="button primary" href="mailto:rayan.zizoua@example.com">Envoyer un e-mail →</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>© 2026 Support IT — Page créée par Rayan Zizoua</footer>
+  <footer>© 2026 Rayan Zizoua — Portfolio personnel</footer>
 </body>
 </html>
